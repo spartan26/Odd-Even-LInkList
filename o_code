@@ -1,0 +1,16 @@
+ListNode* oddEvenList(ListNode* head) {
+        if( !head || !head->next || !head->next->next )
+            return head;
+        ListNode* oddptr=head;
+        ListNode* evenptr=head->next;
+        ListNode* even=head->next;
+        while(evenptr && oddptr && evenptr->next && oddptr->next)
+        {
+            oddptr->next = oddptr->next->next;
+            oddptr = oddptr->next;
+            evenptr->next = evenptr->next->next;
+            evenptr = evenptr->next;
+        }
+        oddptr->next=even;
+        return head;
+    }
